@@ -18,19 +18,19 @@
                     </a>
 
                     <div class="header-links">
-                        <a href="#">
+                        <a href="#about">
                             Кто мы?
                         </a>
 
-                        <a href="#">
+                        <a href="#commercial">
                             Коммерческое предложение
                         </a>
 
-                        <a href="#">
+                        <a href="#projects">
                             Проекты
                         </a>
 
-                        <a href="#">
+                        <a href="#contacts">
                             Контакты
                         </a>
                     </div>
@@ -76,7 +76,7 @@
                 </div>
         </section>
 
-        <section class="who-are-we">
+        <section class="who-are-we" id="about">
             <div class="who-are-we-left">
                 <a href="https://omniagency.ru/" target="_blank" class="omni-big-logo">
                     <svg width="208" height="146" viewBox="0 0 208 146" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -239,7 +239,7 @@
                         </ol>
                     </div>
 
-                    <div class="our-solutions-video">
+                    <div class="our-solutions-video" data-video-src="https://omniagencyproject.ru/video/ocean.mp4" aria-label="Видео">
                         <img src="img/video-bg.png" alt="">
                         
                         <div class="play-btn">
@@ -274,7 +274,7 @@
             </div>
         </section>
 
-        <section class="commercial-offer">
+        <section class="commercial-offer" id="commercial">
             <div class="commercial-offer-head">
                 <h2 class="h1 commercial-offer-title">
                     Коммерческое предложение
@@ -521,7 +521,7 @@
             </div>
         </section>
 
-        <section class="projects">
+        <section class="projects" id="projects">
             <div class="projects-head">
                 <h2 class="h1 projects-head-title">
                     Проекты
@@ -658,7 +658,7 @@
                 </a>
             </div>
 
-            <div class="contacts">
+            <div class="contacts" id="contacts">
                 <h2 class="h1">
                     Контакты
                 </h2>
@@ -732,6 +732,18 @@
             </div>
         </div>
     </footer>
+
+    <!-- Модальное окно для просмотра видео -->
+    <div class="modal-video modal-video-about">
+        <div class="modal-content-video modal-content-video-about">
+            <span class="close-video">&times;</span>
+            <video controls id="modalVideo" preload="metadata">
+                <source src="https://omniagencyproject.ru/video/ocean.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+        </div>
+    </div>
+
 
     <script src="js/script.js"></script>
 </body>
