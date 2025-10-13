@@ -168,12 +168,12 @@ input {
 }
 
 ::-webkit-scrollbar-track {
-  background: #fff;
+  background: var(--black);
   border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: var(--black);
+  background-color: var(--yellow);
 }
 
 
@@ -191,6 +191,7 @@ input {
     font-family: 'Helvetica Neue Regular', sans-serif;
     font-weight: 500;
     font-size: 100px;
+    font-size: clamp(48px, 5vw, 100px);
     line-height: 90%;
     letter-spacing: -0.02em;
     margin-bottom: 30px;
@@ -199,9 +200,10 @@ input {
 .h2 {
     font-family: 'Helvetica Neue Medium', sans-serif;
     font-weight: 500;
-    font-size: 64px;
+    font-size: clamp(32px, 5vw, 64px);
     line-height: 90%;
     letter-spacing: -0.02em;
+    margin-bottom: 30px;
 }
 
 .h3 {
@@ -320,7 +322,169 @@ input {
     fill: var(--black); 
 }
 
+.header-telegram {
+    display: none;
+}
 
+.header-telegram a {
+    background-color: #fff !important;
+    color: var(--black) !important;
+}
+/* 
+.header-telegram a:hover {
+    background-color: var(--yellow) !important;
+} */
+
+
+.mobile-header {
+    display: none;
+}
+
+.burger-menu {
+    position: fixed;
+    top: 73px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--black-bg);
+    z-index: 9999;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0px 40px;
+    box-shadow: none; 
+    display: none;
+}
+
+.burger-menu.active {
+    transform: translateX(0);
+}
+
+.omni-logo {
+    position: absolute;
+    bottom: 120px;
+    right: 20px;
+}
+
+.omni-logo a svg path {
+  transition: fill 0.3s ease;
+  fill: #2c2c2c;
+}
+
+.omni-logo a:hover svg path {
+  fill: yellow;
+}
+
+.burger-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.burger-nav a {
+    font-family: 'Helvetica Neue Medium', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 90%;
+    letter-spacing: -0.02em;
+    color: white;
+    padding: 12px;
+    border-bottom: 1px solid #2c2c2c;
+    transition: color 0.3s ease;
+}
+
+/* Открытие/закрытие бургер меню */
+.burger-menu-btn {
+    position: relative;
+    z-index: 1002;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 100px;
+    transition: background-color 0.3s ease;
+}
+
+.burger-menu-btn span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: var(--black);
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+.burger-menu-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+    width: 20px;
+}
+
+.burger-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.burger-menu-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+    width: 20px;
+}
+
+
+/* Адаптив шапки */
+
+@media (max-width: 1500px) {
+    .header-container {
+        padding: 0px 40px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .header-links,
+    .telegram-link {
+        display: none;
+    }
+
+    .header-telegram,
+    .burger-menu-btn {
+        display: flex;
+    }
+
+    .mobile-header {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+    }
+
+    .header-content {
+        padding: 16px 0px;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+}
+
+@media (max-width: 700px) {
+    .header-container {
+        padding: 0px 16px;
+    }
+
+    .burger-menu {
+        padding: 0px 16px;
+    }
+
+    .h1 {
+        margin-bottom: 24px;
+    }
+}
 
 /* Главный баннер */
 
@@ -335,6 +499,7 @@ input {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 30px;
     padding-bottom: 80px;
 }
 
@@ -351,19 +516,26 @@ input {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
+    gap: 50px;
 }
 
 .welcome-banner {
   max-width: 575px;
   width: 100%;
-  background-image: url("../img/welcome-banner-bg.svg");
-  background-size: cover; 
-  background-repeat: no-repeat;
-  background-position: center right;
+  background-color: #2b2b2b;
   padding: 33px 52px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.welcome-banner-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
 }
 
 .welcome-banner-text {
@@ -392,6 +564,63 @@ input {
     font-weight: 400;
     font-size: 14px;
     color: rgba(255, 255, 255, 0.6);
+}
+
+.partnership {
+    width: 494px;
+
+}
+
+/* Адаптив главного баннера */
+
+@media (max-width: 1500px) {
+    .main-banner {
+        padding: 0px 40px;
+        padding-top: 135px;
+        padding-bottom: 80px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .main-banner-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .partnership,
+    .welcome-banner {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .partnership img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 700px) {
+    .main-banner {
+        padding: 0px 16px;
+        padding-top: 110px;
+        padding-bottom: 40px;
+    }
+
+    .welcome-banner {
+        padding: 20px 12px; 
+    }
+
+    .welcome-banner-text {
+        font-size: 16px;
+    }
+
+    .welcome-banner-icon svg {
+        flex-shrink: 0;
+        width: 60px;
+        height: 60px;
+    }
 }
 
 
@@ -475,15 +704,91 @@ input {
 }
 
 .who-are-we-card {
+    position: relative;
     padding: 20px 24px 24px 24px;
     background-color: #f5f5f5;
     transition: all 0.3s ease;
+    z-index: 2;
 }
 
 .who-are-we-card:hover {
     background-color: var(--yellow);
 }
 
+.we-card-absolute-icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+}
+
+
+/* Адаптив секции "Кто мы такие?" */
+
+@media (max-width: 1500px) {
+    .who-are-we {
+        grid-template-columns: 0.3fr 1fr;
+        padding: 80px 40px 0px 40px;
+    }
+}
+
+@media (max-width: 1420px) {
+    .who-are-we {
+        grid-template-columns: 1fr;
+    }    
+
+    .who-are-we-left {
+        display: none;
+    }
+}
+
+@media (max-width: 1100px) {
+    .who-are-we-cards {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+}
+
+@media (max-width: 700px) {
+    .who-are-we {
+        padding: 60px 16px 0px 16px;
+    }
+
+    .who-are-we-card {
+        padding: 16px 16px 20px 16px;
+    }
+
+    .we-card-icon {
+        margin-bottom: 24px;
+    }
+
+    .we-card-title {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .we-card-text {
+        font-size: 16px;
+    }
+
+    .icon-1 svg {
+        flex-shrink: 0;
+        width: 60px;
+        height: 40px;
+    }
+
+    .icon-2 svg {
+        flex-shrink: 0;
+        width: 40px;
+        height: 40px;
+    }
+
+    .icon-3 svg {
+        flex-shrink: 0;
+        width: 60px;
+        height: 60px;
+    }
+}
 
 /* Секция "Что мы предлагаем?" */
 
@@ -495,6 +800,15 @@ input {
     align-items: center;
     justify-content: center;
     position: relative;
+    display: grid;
+    grid-template-columns: 0.41fr 1fr;
+}
+
+.our-solutions-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 50px;
 }
 
 .our-solutions-content {
@@ -502,11 +816,11 @@ input {
     width: 100%;
 }
 
-.omni-big-logo-container {
+/* .omni-big-logo-container {
     position: absolute;
     bottom: 120px;
     right: 60px;
-}
+} */
 
 .our-solutions-desc-title {
     font-family: 'Helvetica Neue Medium', sans-serif;
@@ -525,6 +839,7 @@ input {
 }   
 
 .our-solutions-descs {
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -608,7 +923,6 @@ input {
 .open-link-container {
     margin-top: 24px;
     display: flex;
-    align-items: right;
     justify-content: flex-end;
 }
 
@@ -620,7 +934,8 @@ input {
     transition: color 0.3s ease;
 }
 
-.open-link p {
+
+.open-link {
     font-family: 'Helvetica Neue Medium', sans-serif;
     font-weight: 500;
     font-size: 20px;
@@ -646,7 +961,7 @@ input {
     transition: fill 0.3s ease;
 }
 
-.open-link:hover p {
+.open-link:hover {
     color: var(--yellow); 
     text-decoration-color: var(--yellow);
 }
@@ -659,8 +974,69 @@ input {
     fill: var(--black); 
 }
 
+/* Адаптив секции "Что мы предлагаем" */
 
+@media (max-width: 1500px) {
+    .our-solutions {
+        grid-template-columns: 0.3fr 1fr;
+        padding: 120px 40px;
+    }
+}
 
+@media (max-width: 1420px) {
+    .our-solutions {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1100px) {
+    .omni-big-logo-container {
+        display: none;
+    } 
+
+    .our-solutions-content {
+        max-width: 100%;
+    }
+
+    .our-solutions-video img {
+        max-height: 100%;
+    }
+}
+
+@media (max-width: 700px) {
+    .our-solutions {
+        padding: 80px 16px;
+    }
+
+    .our-solutions-descs {
+        margin-top: 0px;
+    }
+
+    .our-solutions-desc-title {
+        font-size: 18px;
+    }
+
+    .our-solutions-desc-text {
+        font-size: 16px;
+    }
+
+    .our-solutions-text {
+        margin-top: 24px;
+        font-size: 16px;
+    }
+
+    .our-solutions-text p {
+        margin-bottom: 10px;
+    }
+
+    .our-solutions-video {
+        margin-top: 24px;
+    }
+
+    .open-link {
+        font-size: 18px;
+    }
+}
 
 /* Секция "Коммерческое предложение" */
 
@@ -696,11 +1072,16 @@ input {
 .commercial-offer-card {
     width: 100%;
     display: grid;
-    grid-template-columns: 2.4fr 4fr 1fr 1fr;
+    grid-template-columns: 0.95fr 1.5fr 1fr;
     justify-content: end; 
     column-gap: 40px;
     padding: 16px;
     border-top: 1px solid var(--gray-text);
+}
+
+.offer-card-time-price-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .commercial-offer-card:last-child {
@@ -714,6 +1095,10 @@ input {
     font-weight: 500;
     font-size: 18px;
     line-height: 140%;
+}
+
+.included-price-card-role {
+    font-size: 20px !important;
 }
 
 .offer-card-desc,
@@ -735,7 +1120,7 @@ input {
 .offer-total-price-container {
     width: 100%;
     display: grid;
-    grid-template-columns: 2.5fr 3fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1fr;
     justify-content: end; 
     column-gap: 40px;
     padding: 40px 16px;
@@ -752,12 +1137,89 @@ input {
     background-color: var(--black);
 }
 
+.offer-total-price-and-time {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
 
 .offer-total-price-time {
     text-align: center;
 }
 
+/* Адаптив секции "Коммерческое предложение" */
 
+@media (max-width: 1500px) {
+    .commercial-offer {
+        padding: 0px 40px;
+    }    
+}
+
+@media (max-width: 1100px) {
+    .commercial-offer-head  {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .commercial-offer-card {
+        grid-template-columns: 1fr;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 12px;
+    }
+
+    .offer-card-time, .offer-card-price, .offer-card-desc, .offer-total-price-title, .offer-total-price-time, .offer-total-price {
+        justify-content: flex-start;
+    }
+
+    .offer-total-price-container::after,
+    .invisible {
+        display: none;
+    }
+
+    .offer-total-price-container {
+        padding: 20px 0px;
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .offer-total-price-time {
+        text-align: left;
+    }
+
+    .open-link-container {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 700px) {
+    .commercial-offer {
+        padding: 0px 16px;
+    }    
+
+    .commercial-offer-head p {
+        font-size: 18px;
+    }
+
+    .commercial-offer-head {
+        margin-bottom: 24px;
+    }
+
+    .commercial-offer-card {
+        padding: 20px 0px; 
+    }
+
+    .offer-card-desc, 
+    .offer-card-time, 
+    .offer-card-price, 
+    .offer-total-price-title, 
+    .offer-total-price-time, 
+    .offer-total-price {
+        font-size: 16px !important;
+    }
+}
 
 /* Секция "Входит в стоимость" */
 
@@ -774,6 +1236,10 @@ input {
     margin-bottom: 24px;
 }
 
+.included-price-head .h2 {
+    margin-bottom: 0px;
+}
+
 .included-price-title {
     color: var(--gray);
 }
@@ -787,7 +1253,7 @@ input {
 .included-price-card {
     width: 100%;
     display: grid;
-    grid-template-columns: 0.53fr 0.32fr 1fr;
+    grid-template-columns: 0.55fr 0.38fr 1fr;
     justify-content: end; 
     column-gap: 40px;
     padding: 16px 0px;
@@ -799,6 +1265,31 @@ input {
     border-bottom: 1px solid var(--gray-text);
 }
 
+/* Адаптив секции "Входит в стоимость" */
+
+@media (max-width: 1500px) {
+    .included-price {
+        padding: 80px 40px 120px 40px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .included-price-card {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 20px 0px;
+    }
+
+    .included-price-head {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .included-price {
+        padding: 40px 16px 80px 16px;
+    }
+}
 
 
 /* Секция "Проекты" */
@@ -830,7 +1321,7 @@ input {
     padding: 32px 0px;
     border-top: 1px solid var(--black);
     display: grid;
-    grid-template-columns: 0.9fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 31px;
 }
 
@@ -838,6 +1329,7 @@ input {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 24px;
 }
 
 .project-card-right-bottom {
@@ -903,6 +1395,57 @@ input {
     border-radius: 100px;
 }
 
+/* Адаптив секции "Проекты" */
+
+@media (max-width: 1500px) {
+    .projects {
+        padding: 0px 40px;
+    }
+    
+    .project-card-right-bottom {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card-banners {
+        flex-wrap: wrap;
+        flex-direction: row;
+    
+    }
+}
+
+@media (max-width: 1100px) {
+    .projects-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .project-card {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 20px 0px;
+    }
+}
+
+@media (max-width: 700px) {
+    .projects {
+        padding: 0px 16px;
+    }
+
+    .projects-head {
+        margin-bottom: 24px;
+    }
+
+    .project-card-subtitle {
+        font-size: 16px;
+    }
+
+    .project-card-desc,
+    .project-card-banner {
+        font-size: 18px;
+    }
+}
+
 
 /* Footer */
 
@@ -914,7 +1457,7 @@ input {
 
 .footer-content {
     display: grid;
-    grid-template-columns: 0.9fr 1fr;
+    grid-template-columns: 1fr 0.96fr;
 }
 
 .footer-logo {
@@ -937,6 +1480,7 @@ input {
     justify-content: space-between;
     padding: 16px 0px;
     border-top: 1px solid var(--black);
+    gap: 30px;
 }
 
 .contact-card:last-child {
@@ -977,7 +1521,62 @@ input {
     color: var(--black);
 }
 
+/* Адаптив Footer */
 
+@media (max-width: 1500px) {
+    .footer {
+        padding: 120px 40px 60px 40px;
+    }
+
+    .contact-card-title,
+    .open-link p {
+        font-size: 18px;
+    }
+
+    .h3 {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        grid-auto-flow: dense;
+    }   
+
+    .footer-logo {
+        order: 2;
+        align-self: start;
+    }
+
+    .footer {
+        padding: 80px 40px 20px 40px;
+    }
+
+    .open-link-container-footer {
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 700px) {
+    .footer {
+        padding: 80px 16px 20px 16px;
+    }
+
+    .contact-card {
+        padding: 12px 0px;
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 450px) {
+    .footer-logo a svg {
+        width: 100%;
+        height: 100%;
+    }
+}
 
 /* Модальное окно для просмотра видео */
 

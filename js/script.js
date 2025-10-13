@@ -165,6 +165,94 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Бургер меню
+
+document.addEventListener('DOMContentLoaded', function() {
+    const burgerBtn = document.getElementById('burger');
+    const burgerMenu = document.getElementById('burgerMenu');
+    const body = document.body;
+    
+    // Создаем оверлей
+    const overlay = document.createElement('div');
+    overlay.className = 'burger-overlay';
+    document.body.appendChild(overlay);
+    
+    function toggleMenu() {
+    burgerBtn.classList.toggle('active');
+    burgerMenu.classList.toggle('active');
+    overlay.classList.toggle('active');
+    
+    // Проверяем, активно ли меню после переключения
+    const isActive = burgerMenu.classList.contains('active');
+    
+    // Управляем скроллом
+    if (isActive) {
+        body.style.overflow = 'hidden';
+        document.documentElement.classList.add('no-scroll-modal');
+        document.body.classList.add('no-scroll-modal');
+    } else {
+        body.style.overflow = '';
+        document.documentElement.classList.remove('no-scroll-modal');
+        document.body.classList.remove('no-scroll-modal');
+    }
+}
+    
+    burgerBtn.addEventListener('click', toggleMenu);
+    
+    // Закрытие меню при клике на оверлей или ссылку
+    overlay.addEventListener('click', toggleMenu);
+    burgerMenu.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+            toggleMenu();
+        }
+    });
+    
+    // Закрытие меню при нажатии Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && burgerMenu.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Модальное окно для видео
 
 const modalVideo = document.querySelector('.modal-video');
