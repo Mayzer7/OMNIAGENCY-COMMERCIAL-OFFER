@@ -1050,6 +1050,7 @@ input {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
+    gap: 50px;
     margin-bottom: 40px;
 }
 
@@ -1140,7 +1141,6 @@ input {
 .offer-total-price-and-time {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 50px;
 }
 
 
@@ -1191,6 +1191,10 @@ input {
 
     .open-link-container {
         justify-content: flex-start;
+    }
+
+    .offer-total-price-time {
+        padding-right: 50px;
     }
 }
 
