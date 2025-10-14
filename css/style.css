@@ -1078,16 +1078,25 @@ input {
 .commercial-offer-card {
     width: 100%;
     display: grid;
-    grid-template-columns: 0.95fr 1.5fr 1fr;
-    justify-content: end; 
+    grid-template-columns: 1.05fr 1.8fr 1fr;
+    justify-content: end;
     column-gap: 40px;
     padding: 16px;
     border-top: 1px solid var(--gray-text);
+    padding-right: 16px;
 }
 
 .offer-card-time-price-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+.offer-card-time {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .commercial-offer-card:last-child {
@@ -1126,7 +1135,7 @@ input {
 .offer-total-price-container {
     width: 100%;
     display: grid;
-    grid-template-columns: 1.5fr 1fr 1fr;
+    grid-template-columns: 1.8fr 1fr 1fr;
     justify-content: end; 
     column-gap: 40px;
     padding: 40px 16px;
@@ -1146,6 +1155,7 @@ input {
 .offer-total-price-and-time {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    justify-items: center;
 }
 
 
@@ -1200,6 +1210,11 @@ input {
 
     .offer-total-price-time {
         padding-right: 50px;
+    }
+
+    .offer-card-time-price-container,
+    .offer-total-price-and-time {
+        justify-items: flex-start;
     }
 }
 
