@@ -1216,6 +1216,10 @@ input {
     .offer-total-price-and-time {
         justify-items: flex-start;
     }
+
+    .commercial-offer-card {
+        padding: 20px 0px; 
+    }
 }
 
 @media (max-width: 700px) {
@@ -1229,10 +1233,6 @@ input {
 
     .commercial-offer-head {
         margin-bottom: 24px;
-    }
-
-    .commercial-offer-card {
-        padding: 20px 0px; 
     }
 
     .offer-card-desc, 
