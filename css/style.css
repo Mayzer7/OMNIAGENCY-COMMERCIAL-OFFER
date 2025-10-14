@@ -664,6 +664,11 @@ input {
     text-decoration: underline;
 }
 
+.no-break {
+    white-space: nowrap;
+    text-decoration: none !important;
+}
+
 .we-card-icon {
     margin-bottom: 32px;
 }
