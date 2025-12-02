@@ -1,6 +1,7 @@
 # 🌐 [Commercial-offer.ru](https://omniagencyproject.ru/commercial-offer/), 🎨 [Figma](https://www.figma.com/design/zsmkP3zzoA1BcbEonNJcIw/КП-для-компаний?node-id=40-2&p=f&t=URZ3aYMZ2rYInZYh-0) 
 
-![1 экран](https://github.com/user-attachments/assets/b7461a5e-83a1-46fb-8459-93c6dd57d440)
+
+![1 экран](https://github.com/user-attachments/assets/bcb35b35-dad2-40b6-9af5-8ca17c0cbba7)
 <svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <rect width="1600" height="900" fill="#1F1F1F"/>
 <mask id="path-1-inside-1_40000053_656" fill="white">
