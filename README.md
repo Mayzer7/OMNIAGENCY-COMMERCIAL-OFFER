@@ -1,6 +1,6 @@
-## 🔗 Links
+<p align="left">
+  <a href="https://omniagencyproject.ru/commercial-offer/" target="_blank">🌐 Website</a> &nbsp;|&nbsp;
+  <a href="https://www.figma.com/design/zsmkP3zzoA1BcbEonNJcIw/КП-для-компаний?node-id=40-2&p=f&t=URZ3aYMZ2rYInZYh-0" target="_blank">🎨 Figma</a>
+</p>
 
-<a href="https://omniagencyproject.ru/commercial-offer/" target="_blank">🌐 Website</a>, 
-<a href="https://www.figma.com/design/zsmkP3zzoA1BcbEonNJcIw/КП-для-компаний?node-id=40-2&p=f&t=URZ3aYMZ2rYInZYh-0" target="_blank">🎨 Figma</a>
-
-<img width="1600" height="900" alt="1 экран" src="https://github.com/user-attachments/assets/9f41408b-eb55-4587-8829-22e9e62f923b" />
+<img width="1600" alt="Preview" src="https://github.com/user-attachments/assets/9f41408b-eb55-4587-8829-22e9e62f923b" />
